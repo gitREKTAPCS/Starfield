@@ -1,21 +1,25 @@
-Particle[] partycles = new Particle[2000];
+Particle[] partycles = new Particle[1200];
 
 void setup()
 {
 	size(512, 512);
 
 	for(int i = 0; i < partycles.length; i++){
-		if(i==0){
+		if(i%200==0){
 			 partycles[i]= new OddballParticle();
+		}
+		else if(i==1){
+			partycles[i] = new JumboParticle();
 		}
 		else{
 			partycles[i] = new NormalParticle();
 		}
 	}
 }
+
 void draw()
 {
-	background(0);
+	background(255);
 	for(int j = 0; j < partycles.length; j++){
 		partycles[j].move();
 		partycles[j].show();
@@ -23,6 +27,8 @@ void draw()
 	
 
 }
+
+
 class NormalParticle implements Particle
 {
 	double x, y, normTheta, normSpeed;
@@ -63,44 +69,59 @@ interface Particle
 }
 class OddballParticle implements Particle
 {
-	double x, y, oddTheta, oddSpeed;
+	double x, y;
 	int oddRed, oddGreeen, oddBlue;
-	
 	OddballParticle(){
 		x=256;
 		y=256;
-		oddTheta = Math.random() * (2*Math.PI);
-		oddSpeed=10;
 		oddRed =(int)(Math.random()*250);
 		oddGreeen =(int)(Math.random()*250);
 		oddBlue =(int)(Math.random()*250);
 	}
 
 public void move(){
-	if((x>12 && x<500) && (y>12 && y<500)){
-		x = x + (Math.cos(oddTheta)*oddSpeed);
-		y = y + (Math.sin(oddTheta)*oddSpeed);
+		x = (double)(Math.random()*400);
+		y = (double)(Math.random()*400);
+	}
+
+	public void show(){
+		fill(oddRed, oddGreeen, oddBlue);
+		ellipse((float)x, (float)y, 51, 51);
+	}
+
+}
+class JumboParticle implements Particle
+{
+	double x, y, jumboTheta, jumboSpeed;
+	int jumboRed, jumboGreen,jumboBlue;
+	
+	JumboParticle(){
+		x=256;
+		y=256;
+		jumboTheta = Math.random() * (2*Math.PI);
+		jumboSpeed=10;
+		jumboRed =(int)(Math.random()*250);
+		jumboGreen =(int)(Math.random()*250);
+		jumboBlue =(int)(Math.random()*250);
+	}
+
+	public void move(){
+	if((x>0 && x<512) && (y>0 && y<512)){
+		x = x + (Math.cos(jumboTheta)*jumboSpeed);
+		y = y + (Math.sin(jumboTheta)*jumboSpeed);
 		}
 		else{
 			x = 256;
 			y = 256;
-			oddTheta = Math.random() * (2*Math.PI);
-			oddSpeed=10;
-			oddRed =(int)(Math.random()*250);
-			oddGreeen =(int)(Math.random()*250);
-			oddBlue =(int)(Math.random()*250);
+			jumboTheta = Math.random() * (2*Math.PI);
+			jumboSpeed=10;
 
 		}
 	}
 
 	public void show(){
-		fill(oddRed, oddGreeen, oddBlue);
-		ellipse((float)x, (float)y, 100, 100);
+		fill(jumboRed, jumboGreen, jumboBlue);
+		ellipse((float)x, (float)y, 300, 300);
 	}
-
-}
-class JumboParticle //uses inheritance
-{
-	//your code here
 }
 
