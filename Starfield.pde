@@ -1,4 +1,4 @@
-Particle[] partycles = new Particle[1200];
+Particle[] partycles = new Particle[1000];
 
 void setup()
 {
@@ -19,14 +19,15 @@ void setup()
 
 void draw()
 {
-	background(255);
+	background(123);
 	for(int j = 0; j < partycles.length; j++){
 		partycles[j].move();
 		partycles[j].show();
 	}
 	
-
 }
+
+
 
 
 class NormalParticle implements Particle
@@ -38,7 +39,7 @@ class NormalParticle implements Particle
 		x=256;
 		y=256;
 		normTheta = Math.random() * (2*Math.PI);
-		normSpeed=10;
+		normSpeed=5;
 		normRed =(int)(Math.random()*250);
 		normGreen =(int)(Math.random()*250);
 		normBlue =(int)(Math.random()*250);
@@ -52,6 +53,8 @@ class NormalParticle implements Particle
 		else{
 			x = 256;
 			y = 256;
+			normTheta = Math.random() * (2*Math.PI);
+			normSpeed= 5;
 		}
 	}
 
@@ -65,6 +68,8 @@ interface Particle
 {
 	public void move();
 	public void show(); 
+	public double x = 256;
+	public double y = 256;
 		
 }
 class OddballParticle implements Particle
@@ -99,14 +104,14 @@ class JumboParticle implements Particle
 		x=256;
 		y=256;
 		jumboTheta = Math.random() * (2*Math.PI);
-		jumboSpeed=10;
+		jumboSpeed=1;
 		jumboRed =(int)(Math.random()*250);
 		jumboGreen =(int)(Math.random()*250);
 		jumboBlue =(int)(Math.random()*250);
 	}
 
 	public void move(){
-	if((x>0 && x<512) && (y>0 && y<512)){
+	if((x>-30 && x<542) && (y>-30 && y<542)){
 		x = x + (Math.cos(jumboTheta)*jumboSpeed);
 		y = y + (Math.sin(jumboTheta)*jumboSpeed);
 		}
@@ -114,7 +119,7 @@ class JumboParticle implements Particle
 			x = 256;
 			y = 256;
 			jumboTheta = Math.random() * (2*Math.PI);
-			jumboSpeed=10;
+			jumboSpeed=1;
 
 		}
 	}
