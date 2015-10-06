@@ -5,7 +5,7 @@ void setup()
 	size(512, 512);
 
 	for(int i = 0; i < partycles.length; i++){
-		if(i%200==0){
+		if(i==0){
 			 partycles[i]= new OddballParticle();
 		}
 		else if(i==1){
@@ -121,7 +121,7 @@ class JumboParticle implements Particle
 
 	public void show(){
 		fill(jumboRed, jumboGreen, jumboBlue);
-		ellipse((float)x, (float)y, 300, 300);
+		ellipse((float)x, (float)y, 100, 100);
 	}
 }
 
