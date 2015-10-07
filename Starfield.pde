@@ -39,7 +39,7 @@ class NormalParticle implements Particle
 		x=256;
 		y=256;
 		normTheta = Math.random() * (2*Math.PI);
-		normSpeed=5;
+		normSpeed=10;
 		normRed =(int)(Math.random()*250);
 		normGreen =(int)(Math.random()*250);
 		normBlue =(int)(Math.random()*250);
@@ -53,8 +53,6 @@ class NormalParticle implements Particle
 		else{
 			x = 256;
 			y = 256;
-			normTheta = Math.random() * (2*Math.PI);
-			normSpeed= 5;
 		}
 	}
 
@@ -104,7 +102,7 @@ class JumboParticle implements Particle
 		x=256;
 		y=256;
 		jumboTheta = Math.random() * (2*Math.PI);
-		jumboSpeed=1;
+		jumboSpeed=5;
 		jumboRed =(int)(Math.random()*250);
 		jumboGreen =(int)(Math.random()*250);
 		jumboBlue =(int)(Math.random()*250);
@@ -119,7 +117,7 @@ class JumboParticle implements Particle
 			x = 256;
 			y = 256;
 			jumboTheta = Math.random() * (2*Math.PI);
-			jumboSpeed=1;
+			jumboSpeed=5;
 
 		}
 	}
