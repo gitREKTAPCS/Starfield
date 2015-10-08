@@ -27,9 +27,6 @@ void draw()
 	
 }
 
-
-
-
 class NormalParticle implements Particle
 {
 	double x, y, normTheta, normSpeed;
@@ -45,6 +42,7 @@ class NormalParticle implements Particle
 		normBlue =(int)(Math.random()*250);
 	}
 
+//moves NormalParticles
 	public void move(){
 	if((x>12 && x<500) && (y>12 && y<500)){
 		x = x + (Math.cos(normTheta)*normSpeed);
@@ -53,6 +51,7 @@ class NormalParticle implements Particle
 		else{
 			x = 256;
 			y = 256;
+			normTheta = Math.random() * (2*Math.PI);
 		}
 	}
 
@@ -82,6 +81,7 @@ class OddballParticle implements Particle
 		oddBlue =(int)(Math.random()*250);
 	}
 
+//Randomly moves Oddball
 public void move(){
 		x = (double)(Math.random()*400);
 		y = (double)(Math.random()*400);
@@ -93,14 +93,12 @@ public void move(){
 	}
 
 }
-class JumboParticle implements Particle
+class JumboParticle extends NormalParticle
 {
-	double x, y, jumboTheta, jumboSpeed;
+	double jumboTheta, jumboSpeed;
 	int jumboRed, jumboGreen,jumboBlue;
 	
 	JumboParticle(){
-		x=256;
-		y=256;
 		jumboTheta = Math.random() * (2*Math.PI);
 		jumboSpeed=5;
 		jumboRed =(int)(Math.random()*250);
@@ -108,19 +106,7 @@ class JumboParticle implements Particle
 		jumboBlue =(int)(Math.random()*250);
 	}
 
-	public void move(){
-	if((x>-30 && x<542) && (y>-30 && y<542)){
-		x = x + (Math.cos(jumboTheta)*jumboSpeed);
-		y = y + (Math.sin(jumboTheta)*jumboSpeed);
-		}
-		else{
-			x = 256;
-			y = 256;
-			jumboTheta = Math.random() * (2*Math.PI);
-			jumboSpeed=5;
-
-		}
-	}
+//Just like NormalParticle but changes color and size
 
 	public void show(){
 		fill(jumboRed, jumboGreen, jumboBlue);
